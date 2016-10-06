@@ -1,16 +1,16 @@
 #!/bin/bash
-COMPOSER="."
+COMPOSER="/home/ubuntu/projects/KS/dotnet"
 rm -r $COMPOSER/dotnet/core
 
 mkdir $COMPOSER/dotnet/core_save
 
-docker-compose --file $COMPOSER stop
+docker-compose --file $COMPOSER stop web
 
-unzip   $1  -d   $COMPOSER/dotnet/core/
+unzip   $COMPOSER/$1  -d   $COMPOSER/dotnet/core/
 
-docker-compose --file $COMPOSER/docker-compose.yml up --build
+docker-compose --file $COMPOSER/docker-compose.yml up -d  --build web
 
-rm -r $COMPOSER/dotnet/core
+#rm -r $COMPOSER/dotnet/core
 
 
 

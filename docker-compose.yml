@@ -5,14 +5,16 @@ services:
     ports:
       - "80:80"
     network_mode: "host"
-  web:
-    build: dotnet/.
-    container_name: node
-    network_mode: "host"
+
   db:
     network_mode: "host"
     image: bitnami/postgresql:latest
     environment:
-      - POSTGRESQL_PASSWORD=password123
-      - POSTGRESQL_USERNAME=user
-      - POSTGRESQL_DATABASE=database
+      - POSTGRESQL_PASSWORD=12345
+      - POSTGRESQL_DATABASE=KS
+    volumes:
+      - /var/postgres_bitnami:/bitnami/postgresql
+  web:
+    build: dotnet/.
+    network_mode: "host"
+    restart: on-failure
