@@ -10,7 +10,8 @@ unzip   $COMPOSER/$1  -d   $COMPOSER/dotnet/core/
 
 docker-compose --file $COMPOSER/docker-compose.yml up -d  --build web
 
-#rm -r $COMPOSER/dotnet/core
+rm -r $COMPOSER/dotnet/core
+rm $COMPOSER/*.zip
 
 
 
