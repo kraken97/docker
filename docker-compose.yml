@@ -18,3 +18,8 @@ services:
     build: dotnet/.
     network_mode: "host"
     restart: on-failure
+  web2:
+    build: dotnet-staging/.
+    network_mode: "host"
+    restart: on-failure
+
