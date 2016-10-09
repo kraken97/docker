@@ -18,8 +18,26 @@ services:
     build: dotnet/.
     network_mode: "host"
     restart: on-failure
-  web2:
+    volumes:
+      - /var/upload:/var/upload
+  web-staging:
     build: dotnet-staging/.
     network_mode: "host"
     restart: on-failure
+    volumes:
+      - /var/upload:/var/upload
+  registry:
+    image: registry:2
+    restart: always
+    volumes:
+      - /var/data:/var/lib/registry 
+    ports:
+      - "8888:5000"
+  sen:
+   image: tomastomecek/sen
+   environment:
+     - TERM
+   privileged: true
+   volumes:
+    - /var/run/docker.sock:/run/docker.sock
 
