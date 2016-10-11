@@ -14,5 +14,4 @@ rm -r $COMPOSER/dotnet/core
 
 rm $COMPOSER/*.zip
 
-
-
+Build Success 'KS:Deploy latest GIT live build to server http://52.57.98.196/ ' started by On Repository Change | ./notify.sh

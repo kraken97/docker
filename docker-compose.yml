@@ -5,8 +5,7 @@ services:
     ports:
       - "80:80"
     network_mode: "host"
-
-  db:
+  db-postgres:
     network_mode: "host"
     image: bitnami/postgresql:latest
     environment:
@@ -14,18 +13,25 @@ services:
       - POSTGRESQL_DATABASE=KS
     volumes:
       - /var/postgres_bitnami:/bitnami/postgresql
+  db-mysql:
+    image: mysql
+    network_mode: "host"
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_DATABASE=KS
+      - MYSQL_USER=KS
   web:
     build: dotnet/.
     network_mode: "host"
     restart: on-failure
     volumes:
-      - /var/upload:/var/upload
+      - /var/upload:/var/static/screenshots
   web-staging:
     build: dotnet-staging/.
     network_mode: "host"
     restart: on-failure
     volumes:
-      - /var/upload:/var/upload
+      - /var/upload:/var/static/sceenshots
   registry:
     image: registry:2
     restart: always
@@ -33,11 +39,3 @@ services:
       - /var/data:/var/lib/registry 
     ports:
       - "8888:5000"
-  sen:
-   image: tomastomecek/sen
-   environment:
-     - TERM
-   privileged: true
-   volumes:
-    - /var/run/docker.sock:/run/docker.sock
-
