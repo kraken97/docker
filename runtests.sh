@@ -1,6 +1,5 @@
 #!/bin/bash
 COMPOSER="/home/ubuntu/docker"
-rm -r $COMPOSER/dotnet/core
 
 mkdir $COMPOSER/dotnet/core_save
 
