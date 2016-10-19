@@ -4,7 +4,7 @@ rm -r $COMPOSER/dotnet/core
 
 mkdir $COMPOSER/dotnet/core_save
 
-docker-compose --file $COMPOSER stop web
+docker-compose --file $COMPOSER  up web-test --build
 
 unzip   $COMPOSER/$1  -d   $COMPOSER/dotnet/core/
 
@@ -14,4 +14,3 @@ rm -r $COMPOSER/dotnet/core
 
 rm $COMPOSER/*.zip
 
-echo "Build Success 'KS:Deploy latest GIT live build to server http://52.57.98.196/ ' started by On Repository Change" | sudo /home/ubuntu/docker/notify.sh

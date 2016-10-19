@@ -1,4 +1,4 @@
 ﻿{
   "server.urls": "http://localhost:4040/",
-  "screenshotspath":"/var/upload/screenshots"
+  "screenshotspath":"/var/static/screenshots"
 }

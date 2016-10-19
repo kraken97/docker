@@ -18,20 +18,21 @@ services:
     network_mode: "host"
     environment:
       - MYSQL_ROOT_PASSWORD=12345
-      - MYSQL_DATABASE=KS
-      - MYSQL_USER=KS
   web:
     build: dotnet/.
     network_mode: "host"
     restart: on-failure
     volumes:
-      - /var/upload:/var/static/screenshots
+      - /var/upload:/var/upload/screenshots
   web-staging:
     build: dotnet-staging/.
     network_mode: "host"
     restart: on-failure
     volumes:
-      - /var/upload:/var/static/sceenshots
+      - /var/upload:/var/upload/sceenshots
+  web-test:
+    build: dotnet_test/.
+    network_mode: "host"
   registry:
     image: registry:2
     restart: always
